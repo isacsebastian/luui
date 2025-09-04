@@ -14,19 +14,19 @@ const TeamMemberCard: React.FC<TeamMemberProps> = ({ name, role, imageUrl, alt }
   return (
     <div className="bg-white rounded-lg overflow-hidden shadow-lg flex flex-col h-[380px] sm:h-[380px] hover:shadow-xl transition-shadow duration-300 cursor-pointer group">
       <div className="px-4 py-6 sm:px-6 sm:py-4 flex-1 flex flex-col">
-        
-        {/* Image Container - más espacio para centrar mejor */}
+        {/* Image Container */}
         <div className="relative h-[280px] sm:h-[280px] w-full mb-4 rounded-lg overflow-hidden">
-          <img
+          <Image
             src={imageUrl}
             alt={alt}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            fill
+            sizes="(max-width: 640px) 100vw, 400px"
+            className="object-cover group-hover:scale-105 transition-transform duration-300"
+            priority
           />
         </div>
-        
         {/* Spacer */}
         <div className="flex-1"></div>
-        
         {/* Text Content */}
         <div className="text-center">
           <h3 className="text-base sm:text-lg font-semibold text-[#004D85] mb-1 group-hover:text-[#0077B6] transition-colors duration-300">
@@ -84,7 +84,6 @@ const TeamSection = () => {
   return (
     <section id="nosotros" className="w-full bg-white py-12 sm:py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
         {/* Title */}
         <div className="text-center mb-8 sm:mb-12">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#004D85] mb-4">

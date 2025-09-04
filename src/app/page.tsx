@@ -1,8 +1,5 @@
 "use client";
 
-import { FaHeartPulse, FaNotesMedical, FaPersonFallingBurst, FaUserNurse, FaHospitalUser, FaPills, FaAngleRight, FaQuoteLeft, FaEnvelope } from "react-icons/fa6";
-import Image from "next/image";
-import Count from "./components/Count";
 import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
 import StatisticsSection from "./components/StatisticsSection";
