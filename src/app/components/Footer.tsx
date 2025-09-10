@@ -47,6 +47,18 @@ const Footer = () => {
             
             {/* Servicios Column */}
             <div>
+              <h3 className="font-semibold text-gray-900 mb-4"></h3>
+              <ul className="space-y-3">
+                <li><a href="#" className="text-gray-600 hover:text-[#0077B6] transition-colors text-sm"></a></li>
+                <li><a href="#" className="text-gray-600 hover:text-[#0077B6] transition-colors text-sm"></a></li>
+                <li><a href="#" className="text-gray-600 hover:text-[#0077B6] transition-colors text-sm"></a></li>
+                <li><a href="#" className="text-gray-600 hover:text-[#0077B6] transition-colors text-sm"></a></li>
+                <li><a href="#" className="text-gray-600 hover:text-[#0077B6] transition-colors text-sm"></a></li>
+              </ul>
+            </div>
+
+            {/* Equipo Column */}
+            <div>
               <h3 className="font-semibold text-gray-900 mb-4">Servicios</h3>
               <ul className="space-y-3">
                 <li><a href="#" className="text-gray-600 hover:text-[#0077B6] transition-colors text-sm">Monitoreo vital</a></li>
@@ -54,18 +66,6 @@ const Footer = () => {
                 <li><a href="#" className="text-gray-600 hover:text-[#0077B6] transition-colors text-sm">Detección de caídas</a></li>
                 <li><a href="#" className="text-gray-600 hover:text-[#0077B6] transition-colors text-sm">Cuidadores</a></li>
                 <li><a href="#" className="text-gray-600 hover:text-[#0077B6] transition-colors text-sm">Consultas médicas</a></li>
-              </ul>
-            </div>
-
-            {/* Equipo Column */}
-            <div>
-              <h3 className="font-semibold text-gray-900 mb-4">Equipo</h3>
-              <ul className="space-y-3">
-                <li><a href="#" className="text-gray-600 hover:text-[#0077B6] transition-colors text-sm">Dr. Sofia Mendez</a></li>
-                <li><a href="#" className="text-gray-600 hover:text-[#0077B6] transition-colors text-sm">Dr. Juan Pérez</a></li>
-                <li><a href="#" className="text-gray-600 hover:text-[#0077B6] transition-colors text-sm">Dr. Kimberly Torres</a></li>
-                <li><a href="#" className="text-gray-600 hover:text-[#0077B6] transition-colors text-sm">Mateo Moreira</a></li>
-                <li><a href="#" className="text-gray-600 hover:text-[#0077B6] transition-colors text-sm">David Castillo</a></li>
               </ul>
             </div>
 

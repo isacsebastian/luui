@@ -48,7 +48,7 @@ const CTASection = () => {
   const ctaOptions = [
     {
       title: "Servicios para Adultos Mayores",
-      subtitle: "Acceda a nuestros servicios especializados.",
+      subtitle: "Acceda a nuestros servicios.",
       buttonText: "UNIRME",
       formType: 'adultos-mayores' as const
     },
@@ -61,7 +61,7 @@ const CTASection = () => {
     {
       title: "Cuidadores Familiares",
       subtitle: "Obtenga información y apoyo.",
-      buttonText: "Quiero más información",
+      buttonText: "SABER MÁS",
       formType: 'cuidadores' as const
     }
   ];
