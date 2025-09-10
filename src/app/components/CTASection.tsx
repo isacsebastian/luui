@@ -48,19 +48,19 @@ const CTASection = () => {
   const ctaOptions = [
     {
       title: "Servicios para Adultos Mayores",
-      subtitle: "Acceda a nuestros servicios especializados de cuidado y atención integral",
+      subtitle: "Acceda a nuestros servicios especializados.",
       buttonText: "UNIRME",
       formType: 'adultos-mayores' as const
     },
     {
       title: "Profesionales Geriátricos",
-      subtitle: "Forme parte de nuestro equipo de especialistas en cuidado del adulto mayor",
+      subtitle: "Forme parte de nuestro equipo.",
       buttonText: "APLICAR",
       formType: 'profesionales' as const
     },
     {
       title: "Cuidadores Familiares",
-      subtitle: "Obtenga información y apoyo para el cuidado de su familiar adulto mayor",
+      subtitle: "Obtenga información y apoyo.",
       buttonText: "Quiero más información",
       formType: 'cuidadores' as const
     }
