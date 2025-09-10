@@ -13,18 +13,18 @@ interface CTACardProps {
 
 const CTACard: React.FC<CTACardProps> = ({ title, subtitle, buttonText, onClick }) => {
   return (
-    <div className="bg-white rounded-lg shadow-lg flex items-center justify-between p-4 sm:p-6 hover:shadow-xl transition-shadow duration-300 group cursor-pointer">
+    <div className="bg-white rounded-md shadow-md flex items-center justify-between p-5 sm:p-6 hover:shadow-lg transition-shadow duration-300 border border-gray-100">
       <div className="flex-1">
-        <h3 className="font-bold text-[#0077B6] text-base sm:text-lg mb-1">
+        <h3 className="font-semibold text-[#004D85] text-base sm:text-lg mb-2">
           {title}
         </h3>
-        <p className="text-gray-600 text-sm sm:text-base">
+        <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
           {subtitle}
         </p>
       </div>
       <button 
         onClick={onClick}
-        className="bg-[#56A6E9] hover:bg-[#0077B6] text-white px-4 py-2 sm:px-6 sm:py-3 rounded-lg font-semibold transition-all duration-300 text-sm sm:text-base group-hover:scale-105"
+        className="bg-[#0077B6] hover:bg-[#004D85] text-white px-5 py-2.5 sm:px-6 sm:py-3 rounded-md font-medium transition-all duration-300 text-sm sm:text-base hover:shadow-md"
       >
         {buttonText}
       </button>
@@ -47,62 +47,86 @@ const CTASection = () => {
 
   const ctaOptions = [
     {
-      title: "Adultos Mayores",
-      subtitle: "Servicios y apoyo",
-      buttonText: "Registrarme",
+      title: "Servicios para Adultos Mayores",
+      subtitle: "Acceda a nuestros servicios especializados de cuidado y atención integral",
+      buttonText: "UNIRME",
       formType: 'adultos-mayores' as const
     },
     {
-      title: "Profesionales",
-      subtitle: "Únete a nuestro equipo",
-      buttonText: "Unirme",
+      title: "Profesionales Geriátricos",
+      subtitle: "Forme parte de nuestro equipo de especialistas en cuidado del adulto mayor",
+      buttonText: "APLICAR",
       formType: 'profesionales' as const
     },
     {
-      title: "Cuidadores",
-      subtitle: "Oportunidades de trabajo",
-      buttonText: "Aplicar",
+      title: "Cuidadores Familiares",
+      subtitle: "Obtenga información y apoyo para el cuidado de su familiar adulto mayor",
+      buttonText: "Quiero más información",
       formType: 'cuidadores' as const
     }
   ];
 
   return (
     <>
-      <section id="contacto" className="w-full bg-gradient-to-r from-[#0077B6] to-[#56A6E9] py-12 sm:py-16">
+      <section id="contacto" className="w-full bg-gradient-to-r from-[#004D85] to-[#0077B6] py-14 sm:py-18">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
             
             {/* Left Side - Contact Info */}
-            <div className="space-y-6">
+            <div className="space-y-8">
               {/* Title */}
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white leading-tight">
-                ¿Deseas probar Luuí?
-              </h2>
+              <div>
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-white leading-tight mb-4">
+                  Únase a Luuí
+                </h2>
+                <p className="text-lg sm:text-xl text-white/90 leading-relaxed">
+                  Conéctese con nosotros y descubra cómo podemos apoyarle
+                </p>
+              </div>
               
               {/* Contact Info */}
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <FaPhone className="text-xl text-white" />
-                  <p className="text-base sm:text-lg font-medium text-white">
-                    Phone: +593 98 701 7018
-                  </p>
+              <div className="space-y-5">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-white/20 rounded-md flex items-center justify-center">
+                    <FaPhone className="text-lg text-white" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-white/80 font-medium">Teléfono</p>
+                    <p className="text-lg font-semibold text-white">
+                      +593 98 701 7018
+                    </p>
+                  </div>
                 </div>
                 
-                <div className="flex items-center gap-3">
-                  <FaEnvelope className="text-xl text-white" />
-                  <p className="text-base sm:text-lg font-medium text-white">
-                    Email: info@luui.com
-                  </p>
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-white/20 rounded-md flex items-center justify-center">
+                    <FaEnvelope className="text-lg text-white" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-white/80 font-medium">Correo electrónico</p>
+                    <p className="text-lg font-semibold text-white">
+                      info@luui.com
+                    </p>
+                  </div>
                 </div>
               </div>
 
-              {/* Decorative line */}
-              <div className="w-20 h-1 bg-white opacity-50 rounded-full"></div>
+              {/* Decorative element */}
+              <div className="w-24 h-1 bg-white/40 rounded-full"></div>
             </div>
 
             {/* Right Side - CTA Cards */}
-            <div className="space-y-4">
+            <div className="space-y-5">
+              <div className="mb-6">
+                <h3 className="text-xl sm:text-2xl font-semibold text-white mb-2">
+                  Seleccione su perfil
+                </h3>
+                <p className="text-white/90 text-base">
+                  Elija la opción que mejor describa su situación
+                </p>
+              </div>
+              
               {ctaOptions.map((option, index) => (
                 <CTACard
                   key={index}

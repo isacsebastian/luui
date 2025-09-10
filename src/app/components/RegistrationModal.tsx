@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { FaTimes, FaUser, FaEnvelope, FaPhone, FaIdCard, FaGraduationCap, FaHeart } from 'react-icons/fa';
+import { FaTimes, FaUser, FaEnvelope, FaPhone, FaIdCard, FaGraduationCap, FaHeart, FaMapMarkerAlt, FaUpload } from 'react-icons/fa';
 
 interface FormField {
   name: string;
@@ -22,83 +22,113 @@ interface RegistrationModalProps {
 const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose, formType }) => {
   const [formData, setFormData] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [cvFile, setCvFile] = useState<File | null>(null);
 
   // Configuración de campos según el tipo de formulario
   const getFormConfig = () => {
-    const baseFields: FormField[] = [
-      {
-        name: 'nombre',
-        label: 'Nombre completo',
-        type: 'text',
-        placeholder: 'Ingresa tu nombre completo',
-        required: true,
-        icon: <FaUser className="text-gray-400" />
-      },
-      {
-        name: 'email',
-        label: 'Correo electrónico',
-        type: 'email',
-        placeholder: 'ejemplo@correo.com',
-        required: true,
-        icon: <FaEnvelope className="text-gray-400" />
-      },
-      {
-        name: 'telefono',
-        label: 'Teléfono',
-        type: 'tel',
-        placeholder: '+593 99 999 9999',
-        required: true,
-        icon: <FaPhone className="text-gray-400" />
-      }
-    ];
-
     switch (formType) {
       case 'adultos-mayores':
         return {
-          title: 'Registro para Adultos Mayores',
-          subtitle: 'Completa tu información para acceder a nuestros servicios',
+          title: 'Adultos Mayores',
+          subtitle: 'Complete su información para acceder a nuestros servicios',
+          buttonText: 'UNIRME',
           fields: [
-            ...baseFields,
+            {
+              name: 'nombre',
+              label: 'Nombre completo',
+              type: 'text',
+              placeholder: 'Ingrese su nombre completo',
+              required: true,
+              icon: <FaUser className="text-gray-500" />
+            },
+            {
+              name: 'telefono',
+              label: 'Teléfono',
+              type: 'tel',
+              placeholder: '+593 99 999 9999',
+              required: true,
+              icon: <FaPhone className="text-gray-500" />
+            },
             {
               name: 'edad',
               label: 'Edad',
               type: 'number',
               placeholder: '65',
               required: true,
-              icon: <FaIdCard className="text-gray-400" />
+              icon: <FaIdCard className="text-gray-500" />
             },
             {
               name: 'condiciones',
               label: 'Condiciones médicas (opcional)',
               type: 'textarea',
-              placeholder: 'Describe cualquier condición médica relevante',
+              placeholder: 'Describa cualquier condición médica relevante',
               required: false,
-              icon: <FaHeart className="text-gray-400" />
+              icon: <FaHeart className="text-gray-500" />
             },
             {
-              name: 'contacto_emergencia',
-              label: 'Contacto de emergencia',
+              name: 'nombre_familiar',
+              label: 'Nombre del familiar de contacto',
               type: 'text',
-              placeholder: 'Nombre y teléfono de familiar',
+              placeholder: 'Nombre completo del familiar',
               required: true,
-              icon: <FaPhone className="text-gray-400" />
+              icon: <FaUser className="text-gray-500" />
+            },
+            {
+              name: 'telefono_familiar',
+              label: 'Teléfono del familiar de contacto',
+              type: 'tel',
+              placeholder: '+593 99 999 9999',
+              required: true,
+              icon: <FaPhone className="text-gray-500" />
             }
-          ]
+          ] as FormField[]
         };
 
       case 'profesionales':
         return {
-          title: 'Registro para Profesionales',
-          subtitle: 'Únete a nuestro equipo de profesionales de la salud',
+          title: 'Profesionales Geriátricos',
+          subtitle: 'Únase a nuestro equipo de profesionales de la salud',
+          buttonText: 'APLICAR',
           fields: [
-            ...baseFields,
+            {
+              name: 'nombre',
+              label: 'Nombre completo',
+              type: 'text',
+              placeholder: 'Ingrese su nombre completo',
+              required: true,
+              icon: <FaUser className="text-gray-500" />
+            },
+            {
+              name: 'cedula',
+              label: 'Cédula de identidad',
+              type: 'text',
+              placeholder: '1234567890',
+              required: true,
+              icon: <FaIdCard className="text-gray-500" />
+            },
+            {
+              name: 'email',
+              label: 'Correo electrónico',
+              type: 'email',
+              placeholder: 'ejemplo@correo.com',
+              required: true,
+              icon: <FaEnvelope className="text-gray-500" />
+            },
+            {
+              name: 'telefono',
+              label: 'Teléfono',
+              type: 'tel',
+              placeholder: '+593 99 999 9999',
+              required: true,
+              icon: <FaPhone className="text-gray-500" />
+            },
             {
               name: 'especialidad',
               label: 'Especialidad',
               type: 'select',
-              placeholder: 'Selecciona tu especialidad',
+              placeholder: 'Seleccione su especialidad',
               required: true,
-              icon: <FaGraduationCap className="text-gray-400" />,
+              icon: <FaGraduationCap className="text-gray-500" />,
               options: [
                 'Medicina General',
                 'Geriatría',
@@ -115,61 +145,84 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose, 
               type: 'number',
               placeholder: '5',
               required: true,
-              icon: <FaIdCard className="text-gray-400" />
-            },
-            {
-              name: 'licencia',
-              label: 'Número de licencia profesional',
-              type: 'text',
-              placeholder: 'Ej: MSP-12345',
-              required: true,
-              icon: <FaIdCard className="text-gray-400" />
+              icon: <FaIdCard className="text-gray-500" />
             }
-          ]
+          ] as FormField[]
         };
 
       case 'cuidadores':
         return {
-          title: 'Registro para Cuidadores',
-          subtitle: 'Forma parte de nuestro equipo de cuidadores certificados',
+          title: 'Adultos Cuidadores (Familiares)',
+          subtitle: 'Complete la información del cuidador familiar',
+          buttonText: 'Quiero más información',
           fields: [
-            ...baseFields,
             {
-              name: 'experiencia_cuidado',
-              label: 'Experiencia en cuidado (años)',
-              type: 'number',
-              placeholder: '2',
+              name: 'nombre',
+              label: 'Nombre completo',
+              type: 'text',
+              placeholder: 'Ingrese su nombre completo',
               required: true,
-              icon: <FaHeart className="text-gray-400" />
+              icon: <FaUser className="text-gray-500" />
             },
             {
-              name: 'disponibilidad',
-              label: 'Disponibilidad',
-              type: 'select',
-              placeholder: 'Selecciona tu disponibilidad',
+              name: 'cedula',
+              label: 'Cédula / Documento de identidad',
+              type: 'text',
+              placeholder: '1234567890',
               required: true,
-              icon: <FaUser className="text-gray-400" />,
+              icon: <FaIdCard className="text-gray-500" />
+            },
+            {
+              name: 'relacion',
+              label: 'Relación con el adulto mayor',
+              type: 'select',
+              placeholder: 'Seleccione su relación',
+              required: true,
+              icon: <FaHeart className="text-gray-500" />,
               options: [
-                'Tiempo completo',
-                'Medio tiempo',
-                'Por horas',
-                'Fines de semana',
-                'Nocturno'
+                'Hijo/a',
+                'Nieto/a',
+                'Cónyuge',
+                'Otro'
               ]
             },
             {
-              name: 'certificaciones',
-              label: 'Certificaciones (opcional)',
+              name: 'telefono',
+              label: 'Teléfono de contacto',
+              type: 'tel',
+              placeholder: '+593 99 999 9999',
+              required: true,
+              icon: <FaPhone className="text-gray-500" />
+            },
+            {
+              name: 'email',
+              label: 'Correo electrónico',
+              type: 'email',
+              placeholder: 'ejemplo@correo.com',
+              required: true,
+              icon: <FaEnvelope className="text-gray-500" />
+            },
+            {
+              name: 'direccion',
+              label: 'Ciudad / Dirección de residencia',
+              type: 'text',
+              placeholder: 'Ciudad y dirección completa',
+              required: true,
+              icon: <FaMapMarkerAlt className="text-gray-500" />
+            },
+            {
+              name: 'estado_adulto_mayor',
+              label: 'Estado de salud y condiciones del adulto mayor',
               type: 'textarea',
-              placeholder: 'Describe tus certificaciones en cuidado de adultos mayores',
-              required: false,
-              icon: <FaGraduationCap className="text-gray-400" />
+              placeholder: 'Describa detalladamente el estado de salud, condiciones médicas, nivel de dependencia y cualquier información relevante sobre el adulto mayor que cuida',
+              required: true,
+              icon: <FaHeart className="text-gray-500" />
             }
-          ]
+          ] as FormField[]
         };
 
       default:
-        return { title: '', subtitle: '', fields: baseFields };
+        return { title: '', subtitle: '', buttonText: '', fields: [] };
     }
   };
 
@@ -182,6 +235,15 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose, 
     }));
   };
 
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file && file.type === 'application/pdf') {
+      setCvFile(file);
+    } else {
+      alert('Por favor seleccione un archivo PDF válido');
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -192,18 +254,20 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose, 
       
       console.log('Datos del formulario:', {
         tipo: formType,
-        datos: formData
+        datos: formData,
+        cv: cvFile?.name
       });
 
       // Mostrar mensaje de éxito
-      alert('¡Registro exitoso! Te contactaremos pronto.');
+      alert('Registro exitoso. Nos contactaremos con usted pronto.');
       
       // Resetear formulario y cerrar modal
       setFormData({});
+      setCvFile(null);
       onClose();
     } catch (error) {
       console.error('Error en el registro:', error);
-      alert('Hubo un error. Por favor intenta de nuevo.');
+      alert('Ha ocurrido un error. Por favor intente nuevamente.');
     } finally {
       setIsSubmitting(false);
     }
@@ -223,8 +287,8 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose, 
               onChange={(e) => handleInputChange(field.name, e.target.value)}
               placeholder={field.placeholder}
               required={field.required}
-              rows={3}
-              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0077B6] focus:border-transparent resize-none"
+              rows={4}
+              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#0077B6] focus:border-transparent resize-none"
             />
           </div>
         );
@@ -240,7 +304,7 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose, 
               value={formData[field.name] || ''}
               onChange={(e) => handleInputChange(field.name, e.target.value)}
               required={field.required}
-              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0077B6] focus:border-transparent appearance-none bg-white"
+              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#0077B6] focus:border-transparent appearance-none bg-white"
             >
               <option value="">{field.placeholder}</option>
               {field.options?.map((option) => (
@@ -265,7 +329,7 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose, 
               onChange={(e) => handleInputChange(field.name, e.target.value)}
               placeholder={field.placeholder}
               required={field.required}
-              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0077B6] focus:border-transparent"
+              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#0077B6] focus:border-transparent"
             />
           </div>
         );
@@ -276,18 +340,18 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose, 
 
   return (
     <div 
-      className="fixed inset-0 bg-black/20 backdrop-blur-sm flex items-center justify-center p-4 z-50"
+      className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center p-4 z-50"
       onClick={onClose}
     >
       <div 
-        className="bg-white rounded-xl shadow-2xl w-full max-w-md lg:max-w-2xl max-h-[90vh] overflow-y-auto"
+        className="bg-white rounded-lg shadow-xl w-full max-w-md lg:max-w-2xl max-h-[90vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
         
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b border-gray-200">
           <div>
-            <h2 className="text-xl font-bold text-[#004D85]">
+            <h2 className="text-2xl font-semibold text-[#004D85]">
               {config.title}
             </h2>
             <p className="text-sm text-gray-600 mt-1">
@@ -296,15 +360,15 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose, 
           </div>
           <button
             onClick={onClose}
-            className="text-gray-400 hover:text-gray-600 transition-colors"
+            className="text-gray-400 hover:text-gray-600 transition-colors p-1"
           >
             <FaTimes className="text-xl" />
           </button>
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit} className="p-6 space-y-4 lg:grid lg:grid-cols-2 lg:gap-6 lg:space-y-0">
-          <div className="lg:col-span-2 space-y-4 lg:grid lg:grid-cols-2 lg:gap-4 lg:space-y-0">
+        <form onSubmit={handleSubmit} className="p-6 space-y-5">
+          <div className="space-y-5 lg:grid lg:grid-cols-2 lg:gap-5 lg:space-y-0">
             {config.fields.map((field) => (
               <div key={field.name} className={field.type === 'textarea' ? 'lg:col-span-2' : ''}>
                 <label htmlFor={field.name} className="block text-sm font-medium text-gray-700 mb-2">
@@ -316,16 +380,42 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose, 
             ))}
           </div>
 
+          {/* CV Upload para profesionales */}
+          {formType === 'profesionales' && (
+            <div className="lg:col-span-2">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Curriculum Vitae (PDF) *
+              </label>
+              <div className="relative">
+                <div className="absolute left-3 top-1/2 transform -translate-y-1/2 z-10">
+                  <FaUpload className="text-gray-500" />
+                </div>
+                <input
+                  type="file"
+                  accept=".pdf"
+                  onChange={handleFileChange}
+                  required
+                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#0077B6] focus:border-transparent"
+                />
+              </div>
+              {cvFile && (
+                <p className="text-sm text-green-600 mt-1">
+                  Archivo seleccionado: {cvFile.name}
+                </p>
+              )}
+            </div>
+          )}
+
           {/* Términos y condiciones */}
-          <div className="flex items-start gap-2 mt-6 lg:col-span-2">
+          <div className="flex items-start gap-3 mt-6">
             <input
               type="checkbox"
               id="terminos"
               required
               className="mt-1 h-4 w-4 text-[#0077B6] focus:ring-[#0077B6] border-gray-300 rounded"
             />
-            <label htmlFor="terminos" className="text-xs text-gray-600">
-              Acepto los <a href="#" className="text-[#0077B6] hover:underline">términos y condiciones</a> y la <a href="#" className="text-[#0077B6] hover:underline">política de privacidad</a>
+            <label htmlFor="terminos" className="text-sm text-gray-600 leading-relaxed">
+              Acepto los <a href="#" className="text-[#0077B6] hover:underline font-medium">términos y condiciones</a> y la <a href="#" className="text-[#0077B6] hover:underline font-medium">política de privacidad</a>
             </label>
           </div>
 
@@ -333,9 +423,9 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose, 
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full bg-[#0077B6] hover:bg-[#004D85] disabled:bg-gray-400 text-white py-3 px-6 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg disabled:cursor-not-allowed lg:col-span-2"
+            className="w-full bg-[#0077B6] hover:bg-[#004D85] disabled:bg-gray-400 text-white py-3 px-6 rounded-md font-semibold transition-all duration-300 hover:shadow-lg disabled:cursor-not-allowed mt-6"
           >
-            {isSubmitting ? 'Enviando...' : 'Enviar Registro'}
+            {isSubmitting ? 'Enviando...' : config.buttonText}
           </button>
         </form>
 

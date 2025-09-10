@@ -9,6 +9,7 @@ import TeamSection from "./components/TeamSection";
 import Footer from "./components/Footer";
 import TestimonialsSection from "./components/TestimonialsSection";
 import CTASection from "./components/CTASection";
+import ValuesSection from "./components/ValuesSection";
 
 export default function Home() {
   return (
@@ -28,9 +29,11 @@ export default function Home() {
 
         <SercvicesSection />
 
-        <TeamSection />
+        <ValuesSection />
+        
+        {/* <TeamSection /> */}
 
-       <TestimonialsSection />
+       {/* <TestimonialsSection /> */}
 
         <CTASection />
         
