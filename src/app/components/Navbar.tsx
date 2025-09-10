@@ -46,7 +46,7 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY, isMenuOpen]);
 
-  const handleLinkClick = (section) => {
+  const handleLinkClick = (section: string) => {
     setActiveSection(section);
     closeMenu();
   };
