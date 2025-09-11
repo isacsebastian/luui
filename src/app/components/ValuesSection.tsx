@@ -55,46 +55,58 @@ const ValuesSection = () => {
 
       <div className="max-w-6xl mx-auto relative">
         {/* Header */}
-        <div className="mb-16 text-center">
-          <h2 className="text-4xl lg:text-5xl font-semibold text-[#004D85] mb-4">
+        <div className="text-center mb-16">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#004D85] mb-4">
             Nuestros valores
-          </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Principios fundamentales que guían cada acción en nuestra misión de
-            transformar el cuidado de adultos mayores.
+          </h1>
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Los principios fundamentales que guían cada acción en nuestra misión de transformar el cuidado de adultos mayores
           </p>
+          <div className="w-24 h-1 bg-gradient-to-r from-[#56A6E9] to-[#0077B6] rounded-full mx-auto mt-6"></div>
         </div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Values Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
           {values.map((value, i) => (
             <div
               key={i}
-              className="bg-white p-8 rounded-xl shadow-sm border border-gray-200 flex flex-col items-start space-y-4 opacity-0 animate-fade-in-up"
+              className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 opacity-0 animate-fade-in-up group hover:scale-105"
               style={{ animationDelay: value.delay }}
             >
-              <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-[#E6F1FA]">
-                {value.icon}
+              {/* Icon Section - positioned lower */}
+              <div className="flex justify-center mb-6">
+                <div className="w-20 h-20 flex items-center justify-center rounded-2xl bg-gradient-to-br from-[#56A6E9] to-[#0077B6] shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
+                  {React.cloneElement(value.icon, { className: 'w-10 h-10 text-white' })}
+                </div>
               </div>
-              <h3 className="text-lg font-semibold text-[#004D85]">
-                {value.title}
-              </h3>
-              <p className="text-sm text-gray-600 leading-relaxed">
-                {value.description}
-              </p>
+              
+              {/* Content Section */}
+              <div className="text-center">
+                <h3 className="text-xl font-bold text-[#004D85] mb-4 group-hover:text-[#0077B6] transition-colors duration-300">
+                  {value.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  {value.description}
+                </p>
+              </div>
+              
+              {/* Decorative line */}
+              <div className="w-16 h-1 bg-gradient-to-r from-[#56A6E9] to-[#0077B6] rounded-full mx-auto mt-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </div>
           ))}
         </div>
 
         {/* Bottom Section */}
-        <div className="mt-20 text-center max-w-3xl mx-auto opacity-0 animate-fade-in-up" style={{ animationDelay: "1s" }}>
-          <h3 className="text-2xl font-semibold text-[#004D85] mb-4">
-            Construyendo el futuro del cuidado
-          </h3>
-          <p className="text-gray-600 leading-relaxed">
-            Cada valor que compartimos se traduce en acciones concretas que
-            mejoran la vida de nuestros adultos mayores y sus familias.
-          </p>
+        <div className="mt-20 text-center opacity-0 animate-fade-in-up" style={{ animationDelay: "1.2s" }}>
+          <div className="bg-gradient-to-r from-[#EBF8FF] to-[#F0F9FF] rounded-2xl p-8">
+            <h3 className="text-2xl font-semibold text-[#004D85] mb-4">
+              Construyendo el futuro del cuidado
+            </h3>
+            <p className="text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto">
+              Cada valor que compartimos se traduce en acciones concretas que
+              mejoran la vida de nuestros adultos mayores y sus familias.
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -102,3 +114,4 @@ const ValuesSection = () => {
 };
 
 export default ValuesSection;
+

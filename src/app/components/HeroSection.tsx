@@ -58,16 +58,17 @@ const HeroSection = () => {
 
             {/* Row 2: Text content and button */}
             <div className="text-center space-y-6">
-              <h1 className="text-3xl font-bold text-[#004D85] leading-tight opacity-0 animate-fade-in-up" style={{animationDelay: '0.4s'}}>
-                Conectando generaciones
+              <h1 className="text-4xl font-bold text-[#004D85] leading-tight opacity-0 animate-fade-in-up" style={{animationDelay: '0.4s'}}>
+              Conectar generaciones,
                 <br />
-                <span className="text-[#0077B6]">y garantizando un</span>
+                <span className="text-[#0077B6]">garantizando</span>
                 <br />
-                envejecimiento digno
+                el envejecimiento digno
+
               </h1>
 
               <p className="text-base text-[#004D85] leading-relaxed mx-auto max-w-sm opacity-0 animate-fade-in-up" style={{animationDelay: '0.6s'}}>
-                Plataforma digital que transforma el cuidado de adultos mayores en Latinoamérica, con su primer lanzamiento en Ecuador.
+                Una plataforma digital e IoT que transforma el cuidado de adultos mayores en Latinoamérica, comenzando en Ecuador.
               </p>
                 <button
                 className="bg-[#0077B6] hover:bg-[#004D85] text-white px-6 py-3 rounded font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 opacity-0 animate-fade-in-up"
@@ -174,19 +175,19 @@ const HeroSection = () => {
 
               {/* Text Content - Centered vertically */}
               <div className="flex-1 space-y-6">
-                <h1 className="text-4xl lg:text-5xl font-bold text-[#004D85] leading-tight opacity-0 animate-fade-in-up" style={{animationDelay: '0.4s'}}>
-                  Conectando generaciones
-                  <br />
-                  <span className="text-[#0077B6]">y garantizando un</span>
-                  <br />
-                  envejecimiento digno
+                <h1 className="text-6xl lg:text-5xl font-bold text-[#004D85] leading-tight opacity-0 animate-fade-in-up" style={{animationDelay: '0.4s'}}>
+                 Conectar generaciones,
+                <br />
+                <span className="text-[#0077B6]">garantizando</span>
+                <br />
+                el envejecimiento digno.
                 </h1>
 
                 <p className="text-lg text-[#004D85] leading-relaxed max-w-lg opacity-0 animate-fade-in-up" style={{animationDelay: '0.6s'}}>
-                  Plataforma digital que transforma el cuidado de adultos mayores en Latinoamérica, con su primer lanzamiento en Ecuador.
+                  Una plataforma digital e IoT que transforma el cuidado de adultos mayores en Latinoamérica, comenzando en Ecuador.
                 </p>
 
-                <button className="bg-[#0077B6] hover:bg-[#004D85] text-white px-8 py-4 rounded font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 opacity-0 animate-fade-in-up"
+                <button className="bg-[#0077B6] hover:bg-[#004D85] text-white text-base px-8 py-4 rounded font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 opacity-0 animate-fade-in-up"
                  style={{animationDelay: '0.8s'}}
                   onClick={() => {
                   const el = document.getElementById('servicios');
@@ -195,7 +196,7 @@ const HeroSection = () => {
                   }
                 }}
                 >
-                Conoce cómo funciona
+                Descubre cómo funciona
                 </button>
               </div>
             </div>
@@ -207,12 +208,12 @@ const HeroSection = () => {
                 
                 <div className="bg-[#56A6E9] text-white p-6 rounded shadow-lg opacity-0 animate-fade-in-up" style={{animationDelay: '1s'}}>
                   <div className="text-3xl font-bold mb-2">4.9/5</div>
-                  <div className="text-sm opacity-90">Client Rating</div>
+                  <div className="text-base opacity-90">Client Rating</div>
                 </div>
 
                 <div className="bg-[#0077B6] text-white p-6 rounded shadow-lg opacity-0 animate-fade-in-up" style={{animationDelay: '1.2s'}}>
                   <div className="text-3xl font-bold mb-2">16800+</div>
-                  <div className="text-sm opacity-90">Customers</div>
+                  <div className="text-base opacity-90">Customers</div>
                 </div>
 
               </div>
@@ -234,7 +235,7 @@ const HeroSection = () => {
                 
                 <div className="bg-[#004D85] text-white p-4 rounded shadow-lg col-span-2 opacity-0 animate-fade-in-up" style={{animationDelay: '1.6s'}}>
                   <div className="text-3xl font-bold mb-2">306</div>
-                  <div className="text-sm opacity-90">Professionals</div>
+                  <div className="text-base opacity-90">Professionals</div>
                 </div>
 
                 <div className="relative h-20 w-full opacity-0 animate-fade-in-up" style={{animationDelay: '1.8s'}}>

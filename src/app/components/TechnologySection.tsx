@@ -60,15 +60,13 @@ const TechnologySection = () => {
           <div className="space-y-6">
             
             {/* Título */}
-            <h2 className="text-3xl lg:text-4xl font-bold text-[#0077B6] leading-tight">
-              La tecnología al servicio de los adultos mayores
-            </h2>
+            <h1 className="text-3xl lg:text-4xl font-bold text-[#0077B6] leading-tight">
+              Tecnología que cuida con amor y dignidad
+            </h1>
 
             {/* Descripción */}
             <p className="text-lg text-[#004D85] leading-relaxed">
-              Nuestra Solución integral une cuidado y tecnología: una app para organizar servicios, 
-              dispositivos IoT que detectan riesgos de forma preventiva y un marketplace con 
-              insumos y apoyo de salud, pensado para mejorar la vida de los adultos mayores.
+              Unimos cuidado humano y soluciones inteligentes para transformar la vida de los adultos mayores y sus familias.
             </p>
 
             {/* Botón */}
