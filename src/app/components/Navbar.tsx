@@ -65,7 +65,7 @@ const Navbar = () => {
       }`}>
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           {/* Logo */}
-          <div className="text-2xl font-bold text-[#0077B6]">
+          <div className="text-4xl font-bold text-[#0077B6]">
             Luuí
           </div>
 
