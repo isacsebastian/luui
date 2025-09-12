@@ -7,82 +7,91 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const { name, email, subject, message, formType } = body;
 
+    console.log('Datos recibidos:', { name, email, subject, formType });
+
     // Validar campos requeridos
-    if (!name || !email || !message) {
+    if (!name || !message) {
       return NextResponse.json(
-        { error: 'Todos los campos son requeridos' },
+        { error: 'Nombre y mensaje son requeridos' },
         { status: 400 }
       );
     }
 
-    // Configurar transportador SMTP
+    // Verificar variables de entorno
+    if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
+      console.error('Variables de entorno SMTP faltantes');
+      return NextResponse.json(
+        { error: 'Configuración SMTP no encontrada' },
+        { status: 500 }
+      );
+    }
+
+    console.log('Configurando transportador SMTP...');
+
+    // Configurar transportador SMTP para Hostinger
     const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST, // ejemplo: smtp.gmail.com
-      port: parseInt(process.env.SMTP_PORT || '587'),
-      secure: process.env.SMTP_PORT === '465', // true para 465, false para otros puertos
+      host: process.env.SMTP_HOST,
+      port: 587,
+      secure: false, // false para puerto 587
       auth: {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS,
       },
+      // Opciones adicionales para Hostinger
+      tls: {
+        rejectUnauthorized: false
+      }
     });
+
+    console.log('Verificando conexión SMTP...');
+
+    // Verificar conexión SMTP
+    try {
+      await transporter.verify();
+      console.log('Conexión SMTP exitosa');
+    } catch (error) {
+      console.error('Error en conexión SMTP:', error);
+      return NextResponse.json(
+        { error: 'Error de configuración SMTP' },
+        { status: 500 }
+      );
+    }
 
     // Personalizar contenido según el tipo de formulario
     const getEmailContent = () => {
       switch (formType) {
-        case 'contact':
-          return {
-            subject: `Nuevo mensaje de contacto: ${subject || 'Sin asunto'}`,
-            html: `
-              <h2>Nuevo mensaje de contacto</h2>
-              <p><strong>Nombre:</strong> ${name}</p>
-              <p><strong>Email:</strong> ${email}</p>
-              <p><strong>Asunto:</strong> ${subject || 'No especificado'}</p>
-              <p><strong>Mensaje:</strong></p>
-              <p>${message.replace(/\n/g, '<br>')}</p>
-            `
-          };
-        
         case 'registration':
           return {
-            subject: `${subject}`,
+            subject: subject || `Nuevo registro: ${name}`,
             html: `
               <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
                 <h2 style="color: #004D85; border-bottom: 2px solid #0077B6; padding-bottom: 10px;">
-                  ${subject}
+                  ${subject || `Nuevo registro: ${name}`}
                 </h2>
                 <div style="background-color: #f8f9fa; padding: 20px; border-radius: 5px; margin: 20px 0;">
-                  ${message.replace(/\n/g, '<br>')}
+                  <pre style="white-space: pre-wrap; font-family: Arial, sans-serif;">${message}</pre>
                 </div>
                 <p style="color: #666; font-size: 12px; margin-top: 20px;">
-                  Email enviado desde: ${email}<br>
+                  Email de contacto: ${email || 'No proporcionado'}<br>
                   Fecha: ${new Date().toLocaleString('es-EC')}
                 </p>
               </div>
             `
           };
         
-        case 'service':
-          return {
-            subject: `Solicitud de servicio: ${subject || name}`,
-            html: `
-              <h2>Nueva solicitud de servicio</h2>
-              <p><strong>Cliente:</strong> ${name}</p>
-              <p><strong>Email:</strong> ${email}</p>
-              <p><strong>Servicio solicitado:</strong> ${subject || 'No especificado'}</p>
-              <p><strong>Detalles:</strong></p>
-              <p>${message.replace(/\n/g, '<br>')}</p>
-            `
-          };
-        
         default:
           return {
-            subject: `Nuevo mensaje de ${name}`,
+            subject: subject || `Nuevo mensaje de ${name}`,
             html: `
-              <h2>Nuevo mensaje desde el sitio web</h2>
-              <p><strong>Nombre:</strong> ${name}</p>
-              <p><strong>Email:</strong> ${email}</p>
-              <p><strong>Mensaje:</strong></p>
-              <p>${message.replace(/\n/g, '<br>')}</p>
+              <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+                <h2 style="color: #004D85;">Nuevo mensaje desde el sitio web</h2>
+                <p><strong>Nombre:</strong> ${name}</p>
+                <p><strong>Email:</strong> ${email || 'No proporcionado'}</p>
+                <p><strong>Mensaje:</strong></p>
+                <div style="background-color: #f8f9fa; padding: 15px; border-radius: 5px;">
+                  <pre style="white-space: pre-wrap; font-family: Arial, sans-serif;">${message}</pre>
+                </div>
+              </div>
             `
           };
       }
@@ -94,13 +103,17 @@ export async function POST(request: NextRequest) {
     const mailOptions = {
       from: `"${name}" <${process.env.SMTP_FROM_EMAIL}>`,
       to: process.env.SMTP_TO_EMAIL,
-      replyTo: email,
+      replyTo: email || process.env.SMTP_FROM_EMAIL,
       subject: emailContent.subject,
       html: emailContent.html,
     };
 
+    console.log('Enviando email...');
+
     // Enviar email
     await transporter.sendMail(mailOptions);
+    
+    console.log('Email enviado exitosamente');
 
     return NextResponse.json(
       { message: 'Email enviado exitosamente' },
@@ -108,7 +121,7 @@ export async function POST(request: NextRequest) {
     );
 
   } catch (error) {
-    console.error('Error enviando email:', error);
+    console.error('Error completo:', error);
     return NextResponse.json(
       { error: 'Error interno del servidor' },
       { status: 500 }
