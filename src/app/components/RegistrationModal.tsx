@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { FaTimes, FaUser, FaEnvelope, FaPhone, FaIdCard, FaGraduationCap, FaHeart, FaMapMarkerAlt, FaUpload } from 'react-icons/fa';
+import { useEmailSender } from '../../../hooks/useEmailSender';
 
 interface FormField {
   name: string;
@@ -21,8 +22,8 @@ interface RegistrationModalProps {
 
 const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose, formType }) => {
   const [formData, setFormData] = useState<Record<string, string>>({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [cvFile, setCvFile] = useState<File | null>(null);
+  const { sendEmail, isLoading, error, success } = useEmailSender();
 
   // Configuración de campos según el tipo de formulario
   const getFormConfig = () => {
@@ -244,32 +245,73 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose, 
     }
   };
 
+  // Función para formatear los datos según el tipo de formulario
+  const formatEmailMessage = () => {
+    let message = '';
+    
+    switch (formType) {
+      case 'adultos-mayores':
+        message = `REGISTRO DE ADULTO MAYOR\n\n`;
+        message += `Nombre: ${formData.nombre}\n`;
+        message += `Teléfono: ${formData.telefono}\n`;
+        message += `Edad: ${formData.edad} años\n`;
+        if (formData.condiciones) {
+          message += `Condiciones médicas: ${formData.condiciones}\n`;
+        }
+        message += `\nFamiliar de contacto:\n`;
+        message += `Nombre: ${formData.nombre_familiar}\n`;
+        message += `Teléfono: ${formData.telefono_familiar}\n`;
+        break;
+
+      case 'profesionales':
+        message = `APLICACIÓN DE PROFESIONAL GERIÁTRICO\n\n`;
+        message += `Nombre: ${formData.nombre}\n`;
+        message += `Cédula: ${formData.cedula}\n`;
+        message += `Email: ${formData.email}\n`;
+        message += `Teléfono: ${formData.telefono}\n`;
+        message += `Especialidad: ${formData.especialidad}\n`;
+        message += `Años de experiencia: ${formData.experiencia}\n`;
+        if (cvFile) {
+          message += `\nCV adjunto: ${cvFile.name}\n`;
+        }
+        break;
+
+      case 'cuidadores':
+        message = `SOLICITUD DE INFORMACIÓN - CUIDADOR FAMILIAR\n\n`;
+        message += `Nombre del cuidador: ${formData.nombre}\n`;
+        message += `Cédula: ${formData.cedula}\n`;
+        message += `Email: ${formData.email}\n`;
+        message += `Teléfono: ${formData.telefono}\n`;
+        message += `Relación: ${formData.relacion}\n`;
+        message += `Dirección: ${formData.direccion}\n`;
+        message += `\nEstado del adulto mayor:\n${formData.estado_adulto_mayor}\n`;
+        break;
+    }
+
+    return message;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
 
-    try {
-      // Simular envío de formulario
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      console.log('Datos del formulario:', {
-        tipo: formType,
-        datos: formData,
-        cv: cvFile?.name
-      });
+    const emailData = {
+      name: formData.nombre || 'Usuario',
+      email: formData.email || formData.telefono || 'sin-email@temp.com',
+      subject: `Nuevo registro - ${config.title}`,
+      message: formatEmailMessage(),
+      formType: "registration" as const
+    };
 
-      // Mostrar mensaje de éxito
-      alert('Registro exitoso. Nos contactaremos con usted pronto.');
-      
+    const emailSent = await sendEmail(emailData);
+
+    if (emailSent) {
       // Resetear formulario y cerrar modal
       setFormData({});
       setCvFile(null);
-      onClose();
-    } catch (error) {
-      console.error('Error en el registro:', error);
-      alert('Ha ocurrido un error. Por favor intente nuevamente.');
-    } finally {
-      setIsSubmitting(false);
+      // El modal se cerrará automáticamente después de mostrar el mensaje de éxito
+      setTimeout(() => {
+        onClose();
+      }, 3000);
     }
   };
 
@@ -366,6 +408,19 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose, 
           </button>
         </div>
 
+        {/* Mensajes de estado */}
+        {success && (
+          <div className="mx-6 mt-4 p-3 bg-green-100 border border-green-400 text-green-700 rounded">
+            ¡Registro enviado exitosamente! Nos contactaremos contigo pronto.
+          </div>
+        )}
+
+        {error && (
+          <div className="mx-6 mt-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded">
+            Error: {error}
+          </div>
+        )}
+
         {/* Form */}
         <form onSubmit={handleSubmit} className="p-6 space-y-5">
           <div className="space-y-5 lg:grid lg:grid-cols-2 lg:gap-5 lg:space-y-0">
@@ -422,10 +477,10 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose, 
           {/* Submit Button */}
           <button
             type="submit"
-            disabled={isSubmitting}
+            disabled={isLoading}
             className="w-full bg-[#0077B6] hover:bg-[#004D85] disabled:bg-gray-400 text-white py-3 px-6 rounded-md font-semibold transition-all duration-300 hover:shadow-lg disabled:cursor-not-allowed mt-6"
           >
-            {isSubmitting ? 'Enviando...' : config.buttonText}
+            {isLoading ? 'Enviando...' : config.buttonText}
           </button>
         </form>
 
