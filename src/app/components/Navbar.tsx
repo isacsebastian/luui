@@ -65,8 +65,11 @@ const Navbar = () => {
       }`}>
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           {/* Logo */}
-          <div className="text-4xl font-bold text-[#0077B6]">
-            Luuí
+          <div className="flex items-center gap-2">
+            <img src="/favicon.png" alt="Luuí Logo" className="w-8 h-8" />
+            <div className="text-4xl font-bold text-[#0077B6]">
+              Luuí
+            </div>
           </div>
 
           {/* Desktop Navigation */}

@@ -15,9 +15,7 @@ const Footer = () => {
             {/* Logo */}
             <div className="flex items-center gap-2">
               <div className="w-12 h-12 bg-[#0077B6] rounded-lg flex items-center justify-center">
-                <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-              
-                </svg>
+                <img src="/favicon.png" alt="Luuí Logo" className="w-8 h-8" />
               </div>
               <span className="text-2xl font-bold text-[#0077B6]">Luuí</span>
             </div>
@@ -73,11 +71,10 @@ const Footer = () => {
             <div>
               <h3 className="font-semibold text-gray-900 mb-4">Enlaces Rápidos</h3>
               <ul className="space-y-3">
-                <li><a href="#" className="text-gray-600 hover:text-[#0077B6] transition-colors text-sm">Servicios</a></li>
-                <li><a href="#" className="text-gray-600 hover:text-[#0077B6] transition-colors text-sm">Doctores</a></li>
-                <li><a href="#" className="text-gray-600 hover:text-[#0077B6] transition-colors text-sm">Blog</a></li>
-                <li><a href="#" className="text-gray-600 hover:text-[#0077B6] transition-colors text-sm">Acerca de</a></li>
-                <li><a href="#" className="text-gray-600 hover:text-[#0077B6] transition-colors text-sm">Contacto</a></li>
+                <li><a href="#inicio" className="text-gray-600 hover:text-[#0077B6] transition-colors text-sm">Inicio</a></li>
+                <li><a href="#servicios" className="text-gray-600 hover:text-[#0077B6] transition-colors text-sm">Servicios</a></li>
+                <li><a href="#nosotros" className="text-gray-600 hover:text-[#0077B6] transition-colors text-sm">Acerca de</a></li>
+                <li><a href="#contacto" className="text-gray-600 hover:text-[#0077B6] transition-colors text-sm">Contacto</a></li>
               </ul>
             </div>
 

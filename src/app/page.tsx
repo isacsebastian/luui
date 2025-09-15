@@ -18,7 +18,9 @@ export default function Home() {
       <Navbar />
       
       {/* Hero Section */}
-      <HeroSection />
+      <section id="inicio">
+        <HeroSection />
+      </section>
 
       <StatisticsSection />
 
@@ -27,15 +29,21 @@ export default function Home() {
       {/* Main content - Tus secciones existentes */}
       <main className="flex flex-col gap-[32px] items-center sm:items-start">
 
-        <SercvicesSection />
+        <section id="servicios">
+          <SercvicesSection />
+        </section>
 
-        <ValuesSection />
+        <section id="nosotros">
+          <ValuesSection />
+        </section>
         
         {/* <TeamSection /> */}
 
        {/* <TestimonialsSection /> */}
 
-        <CTASection />
+        <section id="contacto">
+          <CTASection />
+        </section>
         
         <Footer />
       </main>

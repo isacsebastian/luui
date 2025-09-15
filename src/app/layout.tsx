@@ -12,6 +12,9 @@ const workSans = Work_Sans({
 export const metadata: Metadata = {
   title: "LUUÍ",
   description: "Cuidado y apoyo integral para adultos mayores",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
