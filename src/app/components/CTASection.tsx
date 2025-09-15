@@ -95,7 +95,8 @@ const CTASection = () => {
         {/* Background decorative elements */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full transform translate-x-48 -translate-y-48"></div>
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/5 rounded-full transform -translate-x-32 translate-y-32"></div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full">
+          <div className="w-full lg:w-4/5 mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
             
@@ -173,7 +174,7 @@ const CTASection = () => {
             </div>
 
           </div>
-
+          </div>
         </div>
       </section>
 

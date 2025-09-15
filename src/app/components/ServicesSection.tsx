@@ -55,38 +55,37 @@ const services: {
 
 const ServicesSection = () => {
   return (
-    <section id="servicios" className="w-full bg-[#EBF8FF] py-12 sm:py-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="servicios" className="w-full min-h-screen bg-[#EBF8FF] py-16 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
         
         {/* Title */}
-        <div className="mb-8 sm:mb-12">
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-medium text-[#004D85] leading-tight text-center sm:text-left">
+        <div className="mb-16 text-center">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#004D85] leading-tight mb-4">
             Mejora la vida de los adultos mayores con Luuí
           </h1>
+          <div className="w-24 h-1 bg-[#0077B6] mx-auto rounded-full"></div>
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {services.map((service, index) => (
-            <div key={index} className="flex justify-center">
-              <div className="w-full max-w-sm">
-                <ServiceCard 
-                  icon={service.icon}
-                  title={service.title}
-                  description={servicesData[service.key].description}
-                />
-              </div>
+            <div key={index} className="w-full">
+              <ServiceCard 
+                icon={service.icon}
+                title={service.title}
+                description={servicesData[service.key].description}
+              />
             </div>
           ))}
         </div>
 
         {/* CTA Button */}
-        <div className="text-center sm:text-left">
-          <button className="bg-[#0077B6] hover:bg-[#004D85] text-white px-6 py-3 sm:px-8 sm:py-4 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 text-sm sm:text-base">
+        {/* <div className="text-center">
+          <button className="bg-[#0077B6] hover:bg-[#004D85] text-white px-10 py-4 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 text-lg">
             Nuestros servicios
           </button>
         </div>
-
+         */}
       </div>
     </section>
   );
@@ -100,32 +99,29 @@ interface ServiceCardProps {
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ icon: Icon, title, description }) => {
   return (
-    <div className="group [perspective:1000px] w-full h-[220px] sm:h-[240px]">
+    <div className="group [perspective:1000px] w-full h-80">
       <div className="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
         
         {/* Frente */}
         <div className="absolute inset-0 [backface-visibility:hidden]">
-          <div className="bg-white rounded-lg overflow-hidden shadow-lg flex flex-col h-full">
-            <div className="px-4 py-5 sm:px-5 sm:py-6 flex-1 flex flex-col">
-              <div className="mb-4 text-center">
-                <Icon className="text-8xl sm:text-7xl text-[#56A6E9] mx-auto mt-7" />
+          <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 h-full">
+            <div className="p-8 flex flex-col h-full justify-center items-center text-center">
+              <div className="mb-6">
+                <Icon className="text-6xl text-[#56A6E9] mx-auto" />
               </div>
-              <div className="flex-1"></div>
-              <div className="w-full h-0.5 bg-[#B4BFCC] mb-4"></div>
-              <div className="flex flex-row items-center">
-                <p className="text-sm sm:text-base text-[#004D85] font-medium leading-tight flex-1">
-                  {title}
-                </p>
-              </div>
+              <div className="w-full h-px bg-[#B4BFCC] mb-6"></div>
+              <h3 className="text-lg font-semibold text-[#004D85] leading-tight">
+                {title}
+              </h3>
             </div>
           </div>
         </div>
 
         {/* Reverso */}
         <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)]">
-          <div className="bg-[#56A6E9] text-white rounded-lg shadow-lg h-full p-4 sm:p-5 flex flex-col justify-center">
-            <h2 className="text-base font-bold mb-4 text-center">{title}</h2>
-            <p className="text-sm leading-relaxed text-center px-2">
+          <div className="bg-gradient-to-br from-[#56A6E9] to-[#0077B6] text-white rounded-xl shadow-lg h-full p-8 flex flex-col justify-center">
+            <h3 className="text-xl font-bold mb-6 text-center">{title}</h3>
+            <p className="text-sm leading-relaxed text-center opacity-95">
               {description}
             </p>
           </div>

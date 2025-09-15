@@ -13,7 +13,11 @@ export const metadata: Metadata = {
   title: "LUUÍ",
   description: "Cuidado y apoyo integral para adultos mayores",
   icons: {
-    icon: "/favicon.png",
+    icon: {
+      url: "/favicon.png",
+      sizes: "100x100",
+      type: "image/png",
+    },
   },
 };
 

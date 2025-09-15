@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
 import StatisticsSection from "./components/StatisticsSection";
 import TechnologySection from "./components/TechnologySection";
-import SercvicesSection from "./components/ServicesSection";
+import ServicesSection from "./components/ServicesSection"; // Corregí el typo
 import TeamSection from "./components/TeamSection";
 import Footer from "./components/Footer";
 import TestimonialsSection from "./components/TestimonialsSection";
@@ -26,12 +26,11 @@ export default function Home() {
 
       <TechnologySection />
 
-      {/* Main content - Tus secciones existentes */}
-      <main className="flex flex-col gap-[32px] items-center sm:items-start">
-
-        <section id="servicios">
-          <SercvicesSection />
-        </section>
+      {/* Main content - Removí las limitaciones de ancho */}
+      <main className="w-full">
+        
+        {/* Servicios - Removí el section wrapper duplicado */}
+        <ServicesSection />
 
         <section id="nosotros">
           <ValuesSection />
@@ -50,4 +49,3 @@ export default function Home() {
     </div>
   );
 }
-

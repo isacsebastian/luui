@@ -1,8 +1,7 @@
 "use client";
 
 import React from 'react';
-import { FaFacebookF, FaLinkedinIn } from 'react-icons/fa6';
-import { FaTwitter } from 'react-icons/fa';
+import { FaLinkedinIn } from 'react-icons/fa6';
 
 const Footer = () => {
   return (
@@ -14,8 +13,8 @@ const Footer = () => {
           <div className="lg:col-span-1 space-y-6">
             {/* Logo */}
             <div className="flex items-center gap-2">
-              <div className="w-12 h-12 bg-[#0077B6] rounded-lg flex items-center justify-center">
-                <img src="/favicon.png" alt="Luuí Logo" className="w-8 h-8" />
+              <div className="w-[100px] h-[100px] bg-[#0077B6] rounded-full flex items-center justify-center">
+                <img src="/favicon.png" alt="Luuí Logo" className="w-20 h-20 rounded-full" />
               </div>
               <span className="text-2xl font-bold text-[#0077B6]">Luuí</span>
             </div>
@@ -28,15 +27,14 @@ const Footer = () => {
 
             {/* Social Media */}
             <div className="flex gap-3">
-              <div className="w-10 h-10 bg-[#4267B2] rounded-lg flex items-center justify-center cursor-pointer hover:bg-opacity-80 transition-colors">
-                <FaFacebookF className="text-white text-sm" />
-              </div>
-              <div className="w-10 h-10 bg-[#1DA1F2] rounded-lg flex items-center justify-center cursor-pointer hover:bg-opacity-80 transition-colors">
-                <FaTwitter className="text-white text-sm" />
-              </div>
-              <div className="w-10 h-10 bg-[#0077B5] rounded-lg flex items-center justify-center cursor-pointer hover:bg-opacity-80 transition-colors">
+              <a
+                href="https://www.linkedin.com/company/luu%C3%AD/?viewAsMember=true"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 bg-[#0077B5] rounded-lg flex items-center justify-center cursor-pointer hover:bg-opacity-80 transition-colors"
+              >
                 <FaLinkedinIn className="text-white text-sm" />
-              </div>
+              </a>
             </div>
           </div>
 
