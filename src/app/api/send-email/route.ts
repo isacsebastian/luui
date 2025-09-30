@@ -102,7 +102,7 @@ export async function POST(request: NextRequest) {
     // Configurar opciones del email
     const mailOptions = {
       from: `"${name}" <${process.env.SMTP_FROM_EMAIL}>`,
-      to: process.env.SMTP_TO_EMAIL,
+      to: `${process.env.SMTP_TO_EMAIL}, ceo@mateomoa.com`,
       replyTo: email || process.env.SMTP_FROM_EMAIL,
       subject: emailContent.subject,
       html: emailContent.html,
