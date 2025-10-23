@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { FaLinkedinIn } from 'react-icons/fa6';
+import { FaLinkedinIn, FaFacebookF, FaInstagram, FaWhatsapp } from 'react-icons/fa6';
 
 const Footer = () => {
   return (
@@ -35,33 +35,53 @@ const Footer = () => {
               >
                 <FaLinkedinIn className="text-white text-sm" />
               </a>
+              <a
+                href="https://www.facebook.com/profile.php?id=61580980401785"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 bg-[#1877F2] rounded-lg flex items-center justify-center cursor-pointer hover:bg-opacity-80 transition-colors"
+              >
+                <FaFacebookF className="text-white text-sm" />
+              </a>
+              <a
+                href="https://www.instagram.com/luui.io"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 bg-gradient-to-br from-[#833AB4] via-[#E1306C] to-[#F56040] rounded-lg flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity"
+              >
+                <FaInstagram className="text-white text-sm" />
+              </a>
+              <a
+                href="https://whatsapp.com/channel/0029Vb7CI5V3WHTUKXdnhS18"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 bg-[#25D366] rounded-lg flex items-center justify-center cursor-pointer hover:bg-opacity-80 transition-colors"
+              >
+                <FaWhatsapp className="text-white text-sm" />
+              </a>
             </div>
           </div>
 
           {/* Center Section - Links Columns */}
           <div className="lg:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-8">
             
-            {/* Servicios Column */}
+            {/* Empty Column */}
             <div>
               <h3 className="font-semibold text-gray-900 mb-4"></h3>
               <ul className="space-y-3">
-                <li><a href="#" className="text-gray-600 hover:text-[#0077B6] transition-colors text-sm"></a></li>
-                <li><a href="#" className="text-gray-600 hover:text-[#0077B6] transition-colors text-sm"></a></li>
-                <li><a href="#" className="text-gray-600 hover:text-[#0077B6] transition-colors text-sm"></a></li>
-                <li><a href="#" className="text-gray-600 hover:text-[#0077B6] transition-colors text-sm"></a></li>
-                <li><a href="#" className="text-gray-600 hover:text-[#0077B6] transition-colors text-sm"></a></li>
+                <li><a href="#" className="text-gray-600 hover:text-[#0077B6] transition-colors text-sm invisible">-</a></li>
               </ul>
             </div>
 
-            {/* Equipo Column */}
+            {/* Servicios Column */}
             <div>
               <h3 className="font-semibold text-gray-900 mb-4">Servicios</h3>
               <ul className="space-y-3">
-                <li><a href="#" className="text-gray-600 hover:text-[#0077B6] transition-colors text-sm">Monitoreo vital</a></li>
-                <li><a href="#" className="text-gray-600 hover:text-[#0077B6] transition-colors text-sm">Historias clínicas</a></li>
-                <li><a href="#" className="text-gray-600 hover:text-[#0077B6] transition-colors text-sm">Detección de caídas</a></li>
-                <li><a href="#" className="text-gray-600 hover:text-[#0077B6] transition-colors text-sm">Cuidadores</a></li>
-                <li><a href="#" className="text-gray-600 hover:text-[#0077B6] transition-colors text-sm">Consultas médicas</a></li>
+                <li><a href="#servicios" className="text-gray-600 hover:text-[#0077B6] transition-colors text-sm">Monitoreo vital</a></li>
+                <li><a href="#servicios" className="text-gray-600 hover:text-[#0077B6] transition-colors text-sm">Historias clínicas</a></li>
+                <li><a href="#servicios" className="text-gray-600 hover:text-[#0077B6] transition-colors text-sm">Detección de caídas</a></li>
+                <li><a href="#servicios" className="text-gray-600 hover:text-[#0077B6] transition-colors text-sm">Cuidadores</a></li>
+                <li><a href="#servicios" className="text-gray-600 hover:text-[#0077B6] transition-colors text-sm">Consultas médicas</a></li>
               </ul>
             </div>
 
@@ -80,16 +100,16 @@ const Footer = () => {
 
           {/* Right Section - Newsletter */}
           <div className="lg:col-span-1">
-            <h3 className="font-semibold text-gray-900 mb-4">Newsletter</h3>
+            <h3 className="font-semibold text-gray-900 mb-4">Boletín</h3>
             <div className="space-y-4">
               <div className="flex flex-col gap-3">
                 <input 
                   type="email" 
-                  placeholder="Email*" 
+                  placeholder="Correo electrónico*" 
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#0077B6] focus:border-transparent"
                 />
-                <button className="w-full bg-[#0177b6] hover:bg-[#0177b6] text-white py-3 px-4 rounded-lg font-medium text-sm transition-colors">
-                  Subscribe
+                <button className="w-full bg-[#0077B6] hover:bg-[#004D85] text-white py-3 px-4 rounded-lg font-medium text-sm transition-colors">
+                  Suscribirse
                 </button>
               </div>
             </div>

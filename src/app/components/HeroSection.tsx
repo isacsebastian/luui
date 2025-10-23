@@ -89,13 +89,13 @@ const HeroSection = () => {
               {/* Stats Grid */}
               <div className="grid grid-cols-2 gap-3">
                 <div className="bg-[#56A6E9] text-white p-4 rounded shadow-lg opacity-0 animate-fade-in-up" style={{animationDelay: '1s'}}>
-                  <div className="text-2xl font-bold mb-1">4.9/5</div>
-                  <div className="text-xs opacity-90">Client Rating</div>
+                  <div className="text-2xl font-bold mb-1">24/7</div>
+                  <div className="text-xs opacity-90">Monitoreo continuo</div>
                 </div>
 
                 <div className="bg-[#0077B6] text-white p-4 rounded shadow-lg opacity-0 animate-fade-in-up" style={{animationDelay: '1.2s'}}>
-                  <div className="text-2xl font-bold mb-1">16800+</div>
-                  <div className="text-xs opacity-90">Customers</div>
+                  <div className="text-2xl font-bold mb-1">100%</div>
+                  <div className="text-xs opacity-90">Atención personalizada</div>
                 </div>
               </div>
 
@@ -114,8 +114,8 @@ const HeroSection = () => {
               {/* Bottom Grid */}
               <div className="grid grid-cols-4 gap-3">
                 <div className="bg-[#004D85] text-white p-3 rounded shadow-lg col-span-2 opacity-0 animate-fade-in-up" style={{animationDelay: '1.6s'}}>
-                  <div className="text-xl font-bold mb-1">306</div>
-                  <div className="text-xs opacity-90">Professionals</div>
+                  <div className="text-xl font-bold mb-1">IoT</div>
+                  <div className="text-xs opacity-90">Tecnología avanzada</div>
                 </div>
 
                 <div className="relative h-16 w-full opacity-0 animate-fade-in-up" style={{animationDelay: '1.8s'}}>
@@ -207,13 +207,13 @@ const HeroSection = () => {
               <div className="grid grid-cols-2 gap-4">
                 
                 <div className="bg-[#56A6E9] text-white p-6 rounded shadow-lg opacity-0 animate-fade-in-up" style={{animationDelay: '1s'}}>
-                  <div className="text-3xl font-bold mb-2">4.9/5</div>
-                  <div className="text-base opacity-90">Client Rating</div>
+                  <div className="text-3xl font-bold mb-2">24/7</div>
+                  <div className="text-base opacity-90">Monitoreo continuo</div>
                 </div>
 
                 <div className="bg-[#0077B6] text-white p-6 rounded shadow-lg opacity-0 animate-fade-in-up" style={{animationDelay: '1.2s'}}>
-                  <div className="text-3xl font-bold mb-2">16800+</div>
-                  <div className="text-base opacity-90">Customers</div>
+                  <div className="text-3xl font-bold mb-2">100%</div>
+                  <div className="text-base opacity-90">Atención personalizada</div>
                 </div>
 
               </div>
@@ -234,8 +234,8 @@ const HeroSection = () => {
               <div className="grid grid-cols-3 gap-4">
                 
                 <div className="bg-[#004D85] text-white p-4 rounded shadow-lg col-span-2 opacity-0 animate-fade-in-up" style={{animationDelay: '1.6s'}}>
-                  <div className="text-3xl font-bold mb-2">306</div>
-                  <div className="text-base opacity-90">Professionals</div>
+                  <div className="text-3xl font-bold mb-2">IoT</div>
+                  <div className="text-base opacity-90">Tecnología avanzada</div>
                 </div>
 
                 <div className="relative h-20 w-full opacity-0 animate-fade-in-up" style={{animationDelay: '1.8s'}}>

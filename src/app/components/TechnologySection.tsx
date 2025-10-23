@@ -71,7 +71,15 @@ const TechnologySection = () => {
 
             {/* Botón */}
             <div className="pt-4">
-              <button className="border-2 border-[#0077B6] text-[#0077B6] hover:bg-[#0077B6] hover:text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 shadow-sm hover:shadow-md">
+              <button 
+                className="border-2 border-[#0077B6] text-[#0077B6] hover:bg-[#0077B6] hover:text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 shadow-sm hover:shadow-md"
+                onClick={() => {
+                  const el = document.getElementById('servicios');
+                  if (el) {
+                    el.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+              >
                 Conoce más
               </button>
             </div>

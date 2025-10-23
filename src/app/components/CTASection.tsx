@@ -133,7 +133,7 @@ const CTASection = () => {
                   <div>
                     <p className="text-sm text-white/80 font-medium">Correo electrónico</p>
                     <p className="text-lg font-semibold text-white">
-                      info@luui.com
+                      info@luui.io
                     </p>
                   </div>
                 </div>
